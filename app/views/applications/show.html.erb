@@ -36,11 +36,20 @@
   <p>Age: <%= pet.age %></p>
   <p>Breed: <%= pet.breed %></p>
   <p>Adoptable: <%= pet.adoptable %></p>
-  <%= button_to "Adopt: #{pet.name}", "/applications/#{@application.id}/", method: :get, params: {pet_id: pet.id} %>
+  <%= form_with url: "/applications/#{@application.id}/?", method: :get, local: true do |f| %>
+  <%= f.hidden_field :application_id, value: "#{@application.id}" %>
+  <%= f.hidden_field :pet_id, value: "#{pet.id}" %>
+  <%= f.submit "Adopt: #{pet.name}" %>
   <% end %>
+  <% end %>
+
 <% end %>
 <% if @application.pets.empty? %>
-  <h3>Error: you must add at least 1 pet to submit this form</h3>
+<div class="container-fluid" align="center" style="text-align=center">
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #F0FFFF">
+      <div class="card-block">
+    <h6 class="card-title">Error: you must add at least 1 pet to submit this form</h6>
   <% else %>
 <p>Pets Applied For: </p>
 <ul>
@@ -51,8 +60,13 @@
 <% end %>
 <% if !params[:submitted].present? %>
   <% if @application.pets.present? %>
+  <div class="container-fluid" align="center" style="text-align=center">
+    <div class="col-sm-3">
+      <div class="card" style="background-color: #F0FFFF">
+        <div class="card-block">
+      <h6 class="card-title">
     <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |form| %>
-      <%= form.text_area :description, value: @application.description %>
+      <%= form.text_area :description, value: @application.description %><br/>
       <%= form.label :description, "Why would you be a good fit to adopt?" %>
       <% form.label :application_status %>
       <%= form.hidden_field :application_status, value: 'Pending'%>

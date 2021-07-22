@@ -23,12 +23,21 @@ Rails.application.routes.draw do
   patch '/pets/:id', to: 'pets#update'
   delete '/pets/:id', to: 'pets#destroy'
 
+  resources :pet_applications
+  resources :admin_applications
+  resources :admin_shelters
+
+  patch '/pet_applications/:pet_id/:application_id', to: 'pet_applications#update'
+  patch '/pet_applications/:pet_id/:application_id/approved', to: 'pet_applications#approved'
+  patch '/pet_applications/:pet_id/:application_id/denied', to: 'pet_applications#denied'
 
 
   get '/admin/shelters', to: 'admin_shelters#index'
-  get '/admin/shelters/:id', to: 'admin_shelters#show'
+  get '/admin/shelters/:id/', to: 'admin_shelters#show'
 
+  get '/admin/applications', to: 'admin_applications#index'
   get '/admin/applications/:id', to: 'admin_applications#show'
+  patch '/admin/applications/:id', to: 'admin_applications#update'
 
   get '/veterinary_offices', to: 'veterinary_offices#index'
   get '/veterinary_offices/new', to: 'veterinary_offices#new'

@@ -1,0 +1,37 @@
+<div class="container-fluid" align="center" style="text-align=center">
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #F0FFFF">
+      <div class="card-block">
+        <br/>
+        <h4 class="card-title"><%= @application.name %></h4>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% @application.pets.uniq.each do |pet| %>
+          <li class="list-group-item" style="background-color: #FFEBCD">
+            <strong><%= pet.name %></strong></li>
+          <li class="list-group-item" style="background-color: #F0FFFF"><br/>
+
+          <% if @application.pet_application_status(pet.id) == 'approved'%>
+
+            <%= "You approved #{@application.name} to adopt #{pet.name}" %>
+
+          <% elsif @application.pet_application_status(pet.id) == 'denied' %>
+
+            <%= "You rejected #{@application.name}'s lifelong goal to adopt #{pet.name}" %>
+
+          <% else %>
+
+            <%= button_to "Approve #{@application.name} to adopt #{pet.name}", "/pet_applications/#{pet.id}/#{@application.id}/approved", method: :patch %>
+            <br/>
+
+            <%= button_to "Deny #{@application.name} to adopt #{pet.name}", "/pet_applications/#{pet.id}/#{@application.id}/denied", method: :patch %>
+
+          <% end %>
+        <% end %>
+          <br/><br/>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
