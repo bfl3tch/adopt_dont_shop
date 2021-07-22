@@ -1,19 +1,18 @@
 <% if @application.errors.any? %>
 
-
-  <h2>The following errors prevented the application from being saved</h2>
-  <ul>
+<div class="alert alert-danger" role="alert" align="center" style="text-align=center">
+  <h4 class="alert-heading">The following errors prevented the application from being saved</h4>
     <% @application.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <p class="mb-0"><%= msg %></p>
     <% end %>
-  </ul>
 <% end %>
+</div>
 
 <%= form_with url: '/applications', method: :post, local: true do |form| %>
 
 <br/>
 
-<h1 align="center">New Application</h1>
+<h1 align="center"><img src="https://lh3.googleusercontent.com/proxy/3UjAv5ZYYvUchMoaha07U8G_yC2Sxib1O3G585ES5vbPayKGUf9cwNittNwzPfchDqpN7qXkJTMrm0BzhpqHfJ9F0Rfpefl9O-M"></h1>
 <br/>
   <div class="container-fluid" align="center" style="text-align=center">
 

@@ -19,10 +19,13 @@
     <%= render 'welcome/header' %>
 
     <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
+      <div class="alert alert-success" role="alert" align="center" style="text-align=center">
+        <h4 class="alert-heading">Notice</h4>
+      <p class="mb-0">  <%= msg %> </p>
       </div>
     <% end %>
+
+
 
     <%= yield %>
 
