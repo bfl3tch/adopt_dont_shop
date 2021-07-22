@@ -11,7 +11,4 @@ class PetApplication < ApplicationRecord
     pets.uniq
   end
 
-
-
-
 end
