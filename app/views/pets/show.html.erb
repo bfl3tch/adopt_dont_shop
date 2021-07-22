@@ -1,9 +1,26 @@
 
-<h1><%= @pet.name %></h1>
-<h3><%= @pet.age %> years old</h3>
-<h3><%= @pet.breed %></h3>
-<h3><%= @pet.adoptable %></h3>
-<h3><%= @pet.shelter_name %></h3>
+<div class="container-fluid" align="center" style="text-align=center">
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #F0FFFF">
+      <div class="card-block">
+        <br/>
+        <h4 class="card-title"><%= @pet.name %></h4>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="background-color: #FFEBCD"><%= @pet.age %> years old</li>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" style="background-color: #FFEBCD"><%= @pet.breed %></li>
+            <ul class="list-group list-group-flush">
+              <% if @pet.adoptable==true %>
+              <li class="list-group-item" style="background-color: #FFEBCD">Available to adopt!</li>
+              <% elsif @pet.adoptable==false || @pet.adoptable==nil %>
+              <li class="list-group-item" style="background-color: #FFEBCD">Not available to adopt, sorry.<%= @pet.adoptable %></li>
+              <% end %>
 
-<p><%= link_to "Update #{@pet.name}", "pets/#{@pet.id}/edit" %></p>
-<p><%= link_to "Delete #{@pet.name}", "/pets/#{@pet.id}", method: :delete %></p>
+              <div class="container-fluid" align="center" style="text-align=center">
+                  <div class="card" style="background-color: #F0FFFF">
+
+                      <strong>Located at:<br/><a href="/shelters" class="btn btn-outline-primary btn-sm"><%= @pet.shelter_name %></a></strong></div><br/>
+
+<p><%= link_to "Update #{@pet.name}", "pets/#{@pet.id}/edit", class: "btn btn-warning btn-outline-success" %></p>
+<p><%= link_to "Delete #{@pet.name}", "/pets/#{@pet.id}", method: :delete, class: "btn btn-info btn-outline-danger" %></p>
