@@ -18,8 +18,8 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item" style="background-color: #FFEBCD">Status: <strong><%= app.application_status %></strong></li>
             <li class="list-group-item" style="background-color: #F0FFFF"><br/>
-              <a href=<%="/applications/#{app.id}"%> class="btn btn-warning btn-outline-primary"><%= "Visit #{app.name}" %></a>
-              <a href=<%="/applications/#{app.id}/edit"%> class="btn btn-primary btn-outline-warning"><%= "Edit #{app.name}" %></a>
+              <a href=<%="/admin/applications/#{app.id}"%> class="btn btn-warning btn-outline-primary"><%= "Visit #{app.name}" %></a>
+              <a href=<%="/admin/applications/#{app.id}/edit"%> class="btn btn-primary btn-outline-warning"><%= "Edit #{app.name}" %></a>
               <br/><br/>
 
             </li>
