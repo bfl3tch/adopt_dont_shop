@@ -12,7 +12,7 @@ class PetApplicationsController < ApplicationController
     pet = Pet.find(params[:pet_id])
     @pet_application = PetApplication.create(pet: pet, application: application)
     application.pets << pet
-    redirect_to "/applications/#{application.id}/?pet_id&#{params[:pet_id]}"
+    redirect_to "/admin/applications/#{application.id}/?pet_id&#{params[:pet_id]}"
   end
 
   def update
@@ -38,7 +38,7 @@ class PetApplicationsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @pet_application = PetApplication.where(pet: @pet, application: @application)
     @pet_application.update(status: 'denied')
-    
+
     redirect_to "/admin/applications/#{@application.id}/"
   end
 end

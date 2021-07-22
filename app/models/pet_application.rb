@@ -6,9 +6,9 @@ class PetApplication < ApplicationRecord
     pet_app = where("pet_id = #{pet_id} and application_id = #{application_id}")
     pet_app.first
   end
-
-  def potential_pets
-    pets.uniq
-  end
+  # 
+  # def potential_pets
+  #   pets.uniq
+  # end
 
 end

@@ -36,4 +36,16 @@ RSpec.describe 'application creation' do
     expect(page).to have_content("123 Main St.")
 
   end
+
+  it 'renders the form again if incorrectly filled out' do
+    visit "/applications/new"
+    fill_in :name, with: "Brian F"
+    fill_in :street, with: "123 Main St."
+    fill_in :city, with: "Marco Island"
+    fill_in :state, with: "FL"
+
+    click_button('Create Application')
+
+    expect(page).to have_content("error")    
+  end
 end

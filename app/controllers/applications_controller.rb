@@ -19,7 +19,7 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
-    @application = Application.find(params[:id])
+    # @application = Application.find(params[:id])
   end
 
   def update

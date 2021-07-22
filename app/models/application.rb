@@ -12,4 +12,8 @@ class Application < ApplicationRecord
   def pet_application_status(pet_id)
     pet_applications.find_by(pet_id: pet_id).status
   end
+  # 
+  # def potential_pets
+  #   pets.uniq
+  # end
 end

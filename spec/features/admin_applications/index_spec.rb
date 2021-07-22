@@ -9,7 +9,7 @@ RSpec.describe 'the admin application index page' do
     @pet_1 = Pet.create(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: @shelter.id)
     @pet_2 = Pet.create(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: @shelter.id)
 
-    visit "/applications"
+    visit "/admin/applications"
   end
 
   it 'lists all applications by name' do
@@ -18,16 +18,7 @@ RSpec.describe 'the admin application index page' do
     expect(page).to have_content(@app_3.name)
   end
 
-  it 'displays a link to edit each pet' do
-    expect(page).to have_link("Edit #{@app_1.name}")
-    expect(page).to have_link("Edit #{@app_2.name}")
-
-    click_link("Edit #{@app_1.name}")
-
-    expect(current_path).to eq("/applications/#{@app_1.id}/edit")
-  end
-
-  it 'displays a link to delete each pet' do
+  it 'displays a link to delete each application' do
     expect(page).to have_button("Delete #{@app_1.name}")
     expect(page).to have_button("Delete #{@app_2.name}")
 
