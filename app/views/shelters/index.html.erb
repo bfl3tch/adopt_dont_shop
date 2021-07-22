@@ -1,5 +1,9 @@
-<h1>All Shelters</h1>
+<div style="margin: 0 auto; text-align: center">
+  <img src="https://static.wixstatic.com/media/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png/v1/fit/w_2500,h_1330,al_c/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png" alt="All Shelters">
+</div>
 
+<br/>
+<section id="body" align="center">
 <%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
 
 <%= form_with url: "/shelters", method: :get, local: true do |f| %>
@@ -9,6 +13,13 @@
 <% end %>
 
 <% @shelters.each do |shelter| %>
+<section id='body'>
+  <br/>
+    <div class="container-fluid" align="center" style="text-align=center">
+      <div class="col-sm-3">
+        <div class="card" style="background-color: #F0FFFF">
+          <div class="card-block">
+            <br/>
   <div id="shelter-<%= shelter.id %>">
     <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %>
     <p>Created at: <%= shelter.created_at %></p>
