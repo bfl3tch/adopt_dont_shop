@@ -13,6 +13,7 @@
             <ul class="list-group list-group-flush">
               <% if @pet.adoptable==true %>
               <li class="list-group-item" style="background-color: #FFEBCD">Available to adopt!</li>
+                <%= @pet.adoptable %>
               <% elsif @pet.adoptable==false || @pet.adoptable==nil %>
               <li class="list-group-item" style="background-color: #FFEBCD">Not available to adopt, sorry.<%= @pet.adoptable %></li>
               <% end %>
