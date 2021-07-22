@@ -1,29 +1,38 @@
 <div style="margin: 0 auto; text-align: center">
-  <img src="https://static.wixstatic.com/media/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png/v1/fit/w_2500,h_1330,al_c/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png" alt="All Shelters">
+<h1> All Shelters </h1>
+</div>
+<div style="margin: 0 auto; text-align: center">
+  <img src="https://static.wixstatic.com/media/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png/v1/fit/w_2500,h_1330,al_c/76240c_fd3a80f8e540407d81ae2ef8c63720ca~mv2.png" alt="All Shelters" height=20% width=20%>
 </div>
 
 <br/>
 <section id="body" align="center">
-<%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
+<%= link_to "Sort by number of pets", "/shelters?sort=pet_count", class: "btn btn-secondary btn-outline-warning"  %>
+<br/><br/>
 
 <%= form_with url: "/shelters", method: :get, local: true do |f| %>
   <%= f.label :search %>
   <%= f.text_field :search %>
   <%= f.submit "Search" %>
 <% end %>
+<br/>
 
 <% @shelters.each do |shelter| %>
-<section id='body'>
-  <br/>
+
+  <div id="shelter-<%= shelter.id %>">
     <div class="container-fluid" align="center" style="text-align=center">
+
       <div class="col-sm-3">
         <div class="card" style="background-color: #F0FFFF">
           <div class="card-block">
             <br/>
-  <div id="shelter-<%= shelter.id %>">
-    <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %>
-    <p>Created at: <%= shelter.created_at %></p>
-    <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
-    <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
+            <h4 class="card-title"><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}", class: "btn btn-info btn-outline-danger" %></h4><br/>
+    <li class="list-group-item" style="background-color: #FFEBCD">Created at: <%= shelter.created_at %></p>
+    <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit", class: "btn btn-success btn-outline-warning" %>
+    <br/><br/>
+    <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete, class: "btn btn-danger btn-outline-warning" %>
+    </div>
+    </div>
   </div>
+  <br/>
 <% end %>
