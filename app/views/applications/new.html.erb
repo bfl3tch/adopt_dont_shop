@@ -54,11 +54,11 @@
       <li class="list-group-item" style="background-color: #ffc40c">
       <% form.label :description %>
       <%= form.hidden_field :description %>
-    <br/>
+
 
     <ul class="list-group list-group-flush">
       <li class="list-group-item" style="background-color: #ffc40c">
-      <% form.label :application_status %>
+      <%= form.label :application_status, "Do not submit until all fields are completed." %>
       <%= form.hidden_field :application_status, value: 'In Progress'%>
       </div>
     <br/>
