@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: adopt_dont_shop_production
+  database: adopt_dont_shop_development
   username: adopt_dont_shop
   password: <%= ENV['ADOPT_DONT_SHOP_DATABASE_PASSWORD'] %>
